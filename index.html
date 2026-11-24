@@ -1,211 +1,191 @@
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Portofolio Selly Artika, mahasiswa Sistem Informasi.">
-  <title>Selly Artika | Portfolio</title>
-  <style>
-    :root {
-      --blue: #2563eb;
-      --blue-dark: #173b83;
-      --ink: #17233b;
-      --muted: #62708a;
-      --pale: #eef5ff;
-      --white: #fff;
-      --line: #dce7f7;
-      --shadow: 0 16px 45px rgba(31, 75, 145, .10);
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: Inter, "Segoe UI", Arial, sans-serif;
-      color: var(--ink);
-      background: #fbfdff;
-      line-height: 1.65;
-    }
-    a { color: inherit; text-decoration: none; }
-    .container { width: min(1100px, 90%); margin: auto; }
-    header {
-      position: sticky; top: 0; z-index: 10;
-      background: rgba(255,255,255,.92); backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--line);
-    }
-    .nav { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
-    .brand { font-weight: 800; color: var(--blue-dark); font-size: 1.15rem; letter-spacing: -.4px; }
-    .brand span { color: var(--blue); }
-    nav { display: flex; gap: 26px; align-items: center; }
-    nav a { color: #52617a; font-size: .94rem; font-weight: 600; }
-    nav a:hover { color: var(--blue); }
-    .menu-btn { display: none; border: 0; background: none; font-size: 1.5rem; color: var(--ink); cursor: pointer; }
-    .hero {
-      overflow: hidden; position: relative;
-      background: radial-gradient(circle at 85% 20%, #d6e7ff 0, transparent 30%),
-                  linear-gradient(135deg, #f1f7ff 0%, #fff 68%);
-      padding: 105px 0 95px;
-    }
-    .hero-grid { display: grid; grid-template-columns: 1.35fr .65fr; align-items: center; gap: 55px; }
-    .eyebrow { color: var(--blue); font-weight: 800; letter-spacing: 2px; text-transform: uppercase; font-size: .78rem; }
-    h1 { font-size: clamp(2.6rem, 6vw, 4.5rem); line-height: 1.08; letter-spacing: -2px; margin: 18px 0; }
-    h1 span { color: var(--blue); }
-    .hero p { color: var(--muted); max-width: 610px; font-size: 1.08rem; }
-    .actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 30px; }
-    .btn { display: inline-flex; align-items: center; justify-content: center; padding: 12px 21px; border-radius: 10px; font-weight: 700; transition: .2s; }
-    .btn-primary { color: white; background: var(--blue); box-shadow: 0 9px 22px rgba(37,99,235,.22); }
-    .btn-primary:hover { background: #1d4ed8; transform: translateY(-2px); }
-    .btn-outline { border: 1px solid #cbdaf2; color: var(--blue-dark); background: white; }
-    .btn-outline:hover { border-color: var(--blue); }
-    .profile-card {
-      background: white; border: 1px solid var(--line); border-radius: 28px;
-      padding: 28px; box-shadow: var(--shadow); text-align: center; transform: rotate(2deg);
-    }
-    .avatar {
-      width: 190px; height: 190px; border-radius: 50%; margin: 4px auto 20px;
-      display: grid; place-items: center; color: white; font-size: 4rem; font-weight: 800;
-      background: linear-gradient(145deg, #7eb4ff, #2456c8);
-      border: 9px solid #edf4ff; box-shadow: 0 10px 30px rgba(37,99,235,.18);
-    }
-    .profile-card h3 { font-size: 1.15rem; }
-    .profile-card p { font-size: .9rem; margin: 4px auto 0; }
-    section { padding: 82px 0; }
-    .section-head { text-align: center; max-width: 650px; margin: 0 auto 42px; }
-    .section-head .eyebrow { margin-bottom: 9px; }
-    h2 { font-size: clamp(1.9rem, 4vw, 2.55rem); letter-spacing: -.8px; }
-    .section-head p { color: var(--muted); margin-top: 10px; }
-    .about-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 35px; align-items: stretch; }
-    .about-highlight { background: var(--pale); border: 1px solid var(--line); border-radius: 20px; padding: 30px; }
-    .about-highlight strong { color: var(--blue-dark); font-size: 1.2rem; display: block; margin-bottom: 8px; }
-    .about-text { color: var(--muted); padding: 10px 0; }
-    .chips { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 18px; }
-    .chip { background: white; color: var(--blue-dark); border: 1px solid var(--line); border-radius: 30px; padding: 7px 13px; font-size: .85rem; font-weight: 650; }
-    .soft { background: #f5f9ff; }
-    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .card { background: white; border: 1px solid var(--line); border-radius: 18px; padding: 25px; box-shadow: 0 8px 25px rgba(31,75,145,.045); }
-    .card-icon { width: 46px; height: 46px; display: grid; place-items: center; border-radius: 13px; background: var(--pale); color: var(--blue); font-size: 1.3rem; margin-bottom: 17px; }
-    .card h3 { margin-bottom: 8px; font-size: 1.08rem; }
-    .card p { color: var(--muted); font-size: .94rem; }
-    .project-tag { display: inline-block; margin-top: 16px; color: var(--blue); font-size: .8rem; font-weight: 800; }
-    .contact-box { background: linear-gradient(135deg, #1e4da8, #3479ed); color: white; border-radius: 24px; padding: 48px; text-align: center; }
-    .contact-box p { color: #e5efff; margin: 12px auto 23px; max-width: 580px; }
-    .contact-box .btn { background: white; color: var(--blue-dark); }
-    footer { padding: 25px 0; text-align: center; color: var(--muted); font-size: .88rem; border-top: 1px solid var(--line); }
-    @media (max-width: 760px) {
-      .menu-btn { display: block; }
-      nav { display: none; position: absolute; top: 72px; left: 0; right: 0; padding: 18px 5%; background: white; border-bottom: 1px solid var(--line); flex-direction: column; gap: 15px; align-items: flex-start; }
-      nav.open { display: flex; }
-      .hero { padding: 75px 0; }
-      .hero-grid, .about-grid { grid-template-columns: 1fr; }
-      .profile-card { max-width: 330px; margin: 0 auto; }
-      .cards { grid-template-columns: 1fr; }
-      section { padding: 65px 0; }
-      .contact-box { padding: 35px 22px; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Selly Artika | Portfolio</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:Arial,sans-serif;color:#172554;background:#f8fbff;line-height:1.7}
+a{text-decoration:none;color:inherit}
+.container{width:90%;max-width:1100px;margin:auto}
+header{background:white;padding:18px 0;position:sticky;top:0;z-index:10;box-shadow:0 2px 12px #0000000d}
+.nav{display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:24px;font-weight:bold;color:#2563eb}
+nav{display:flex;gap:24px}
+nav a{font-size:14px;font-weight:bold;color:#334155}
+nav a:hover{color:#2563eb}
+.hero{padding:100px 0;background:linear-gradient(135deg,#dbeafe,#ffffff)}
+.hero-content{display:grid;grid-template-columns:1.4fr .6fr;align-items:center;gap:40px}
+.tag{color:#2563eb;font-weight:bold;letter-spacing:2px;font-size:13px}
+h1{font-size:48px;line-height:1.2;margin:18px 0}
+h1 span{color:#2563eb}
+.hero p{color:#64748b;max-width:600px}
+.btn{display:inline-block;background:#2563eb;color:white;padding:12px 24px;border-radius:8px;margin-top:24px;font-weight:bold}
+.btn:hover{background:#1d4ed8}
+.profile{background:white;padding:30px;border-radius:24px;text-align:center;box-shadow:0 10px 35px #2563eb18}
+.avatar{width:150px;height:150px;border-radius:50%;background:linear-gradient(135deg,#60a5fa,#1d4ed8);color:white;display:grid;place-items:center;font-size:48px;font-weight:bold;margin:auto auto 18px;border:7px solid #dbeafe}
+section{padding:75px 0}
+.section-title{text-align:center;margin-bottom:40px}
+.section-title h2{font-size:32px;color:#1e40af}
+.section-title p{color:#64748b;margin-top:8px}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}
+.about-box,.card{background:white;padding:28px;border-radius:16px;border:1px solid #e2e8f0;box-shadow:0 5px 20px #00000008}
+.about-box h3,.card h3{color:#2563eb;margin-bottom:12px}
+.about-box p,.card p{color:#64748b;font-size:14px}
+.skills{background:#eff6ff}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.skill{text-align:center}
+.skill .symbol{font-size:30px;margin-bottom:12px}
+.project{border-top:4px solid #3b82f6}
+.project small{display:inline-block;color:#2563eb;margin-top:15px;font-weight:bold}
+.education{background:#eff6ff}
+.edu-box{max-width:700px;margin:auto;background:white;border-left:5px solid #2563eb;padding:25px;border-radius:12px}
+.edu-box h3{color:#1e40af}
+.edu-box p{color:#64748b}
+.contact-box{background:linear-gradient(135deg,#1e40af,#3b82f6);color:white;text-align:center;padding:45px 20px;border-radius:20px}
+.contact-box p{margin:12px 0}
+.contact-box .btn{background:white;color:#1e40af}
+footer{text-align:center;padding:25px;background:#172554;color:white;font-size:13px}
+@media(max-width:700px){
+nav{gap:10px;flex-wrap:wrap;justify-content:center}
+nav a{font-size:12px}
+.nav{flex-direction:column;gap:12px}
+.hero-content,.about{grid-template-columns:1fr}
+h1{font-size:36px}
+.grid{grid-template-columns:1fr}
+.hero{padding:65px 0}
+}
+</style>
 </head>
 <body>
-  <header>
-    <div class="container nav">
-      <a class="brand" href="#home">Selly<span>.</span></a>
-      <button class="menu-btn" aria-label="Buka menu" onclick="document.querySelector('nav').classList.toggle('open')">☰</button>
-      <nav>
-        <a href="#home">Beranda</a><a href="#about">Tentang</a><a href="#skills">Keahlian</a>
-        <a href="#projects">Proyek</a><a href="#contact">Kontak</a>
-      </nav>
-    </div>
-  </header>
 
-  <main>
-    <section class="hero" id="home">
-      <div class="container hero-grid">
-        <div>
-          <div class="eyebrow">Personal Portfolio</div>
-          <h1>Halo, saya<br><span>Selly Artika</span></h1>
-          <p>Mahasiswa Sistem Informasi yang tertarik pada teknologi, perancangan sistem, pengembangan aplikasi, dan pengelolaan basis data.</p>
-          <div class="actions">
-            <a class="btn btn-primary" href="#projects">Lihat Proyek</a>
-            <a class="btn btn-outline" href="#contact">Hubungi Saya</a>
-          </div>
-        </div>
-        <div class="profile-card">
-          <div class="avatar">IP</div>
-          <h3>Selly Artika</h3>
-          <p>Mahasiswa Sistem Informasi</p>
-        </div>
-      </div>
-    </section>
+<header>
+<div class="container nav">
+<div class="logo">Selly Artika.</div>
+<nav>
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#education">Education</a>
+<a href="#skills">Skills</a>
+<a href="#projects">Projects</a>
+<a href="#contact">Contact</a>
+</nav>
+</div>
+</header>
 
-    <section id="about">
-      <div class="container">
-        <div class="section-head">
-          <div class="eyebrow">Kenali Saya</div>
-          <h2>Tentang Saya</h2>
-          <p>Sekilas tentang latar belakang dan hal yang saya pelajari.</p>
-        </div>
-        <div class="about-grid">
-          <div class="about-highlight">
-            <strong>Mahasiswa Sistem Informasi</strong>
-            <p class="about-text">Fokus belajar pada hubungan antara teknologi, proses bisnis, dan kebutuhan pengguna.</p>
-            <div class="chips"><span class="chip">Teknologi</span><span class="chip">Analisis Sistem</span><span class="chip">Desain</span></div>
-          </div>
-          <div class="about-text">
-            <p>Saya adalah mahasiswa Program Studi Sistem Informasi. Saya senang mempelajari bagaimana teknologi dapat membantu menyelesaikan permasalahan sehari-hari. Melalui perkuliahan dan proyek, saya mengembangkan kemampuan dalam pemrograman, basis data, analisis kebutuhan, serta perancangan antarmuka dan sistem.</p>
-            <p style="margin-top:14px">Portofolio ini menjadi tempat untuk menampilkan proses belajar, keterampilan, dan proyek yang pernah saya kerjakan.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+<main>
+<section class="hero" id="home">
+<div class="container hero-content">
+<div>
+<div class="tag">WELCOME TO MY PORTFOLIO</div>
+<h1>Halo, Saya<br><span>Selly Artika</span></h1>
+<h3>Information Systems Student</h3>
+<p>Mahasiswa Sistem Informasi yang memiliki ketertarikan pada teknologi, pemrograman, desain UI/UX, dan pengembangan sistem informasi.</p>
+<a href="#projects" class="btn">Lihat Proyek Saya</a>
+</div>
+<div class="profile">
+<div class="avatar">SA</div>
+<h2>Selly Artika</h2>
+<p>Mahasiswa Sistem Informasi</p>
+</div>
+</div>
+</section>
 
-    <section class="soft" id="skills">
-      <div class="container">
-        <div class="section-head">
-          <div class="eyebrow">Kemampuan</div>
-          <h2>Keahlian Saya</h2>
-          <p>Beberapa bidang dan tools yang pernah saya pelajari.</p>
-        </div>
-        <div class="cards">
-          <article class="card"><div class="card-icon">⌨</div><h3>Python</h3><p>Pemrograman dasar dan pembuatan aplikasi desktop sederhana.</p></article>
-          <article class="card"><div class="card-icon">⌘</div><h3>HTML & CSS</h3><p>Membangun struktur dan tampilan halaman website.</p></article>
-          <article class="card"><div class="card-icon">▤</div><h3>Laravel</h3><p>Mempelajari pengembangan aplikasi web menggunakan framework Laravel.</p></article>
-          <article class="card"><div class="card-icon">▦</div><h3>Database</h3><p>Perancangan tabel, relasi, dan pengolahan data menggunakan SQL.</p></article>
-          <article class="card"><div class="card-icon">✎</div><h3>Figma & UI/UX</h3><p>Membuat rancangan antarmuka dan memperhatikan pengalaman pengguna.</p></article>
-          <article class="card"><div class="card-icon">◇</div><h3>UML & Analisis Sistem</h3><p>Menggambarkan kebutuhan, proses, dan alur kerja sistem.</p></article>
-        </div>
-      </div>
-    </section>
+<section id="about">
+<div class="container">
+<div class="section-title">
+<h2>About Me</h2>
+<p>Mengenal lebih dekat tentang saya</p>
+</div>
+<div class="about">
+<div class="about-box">
+<h3>Who Am I?</h3>
+<p>Halo! Saya Selly Artika, mahasiswa Program Studi Sistem Informasi. Saya tertarik mempelajari perkembangan teknologi dan bagaimana sistem informasi dapat membantu menyelesaikan berbagai permasalahan.</p>
+</div>
+<div class="about-box">
+<h3>My Interests</h3>
+<p>Saya senang mempelajari pemrograman, pengelolaan database, analisis sistem, perancangan aplikasi, serta desain antarmuka pengguna.</p>
+</div>
+</div>
+</div>
+</section>
 
-    <section id="projects">
-      <div class="container">
-        <div class="section-head">
-          <div class="eyebrow">Karya Saya</div>
-          <h2>Proyek Pilihan</h2>
-          <p>Contoh proyek perkuliahan yang dapat dikembangkan dan dilengkapi dokumentasinya.</p>
-        </div>
-        <div class="cards">
-          <article class="card"><div class="card-icon">🛒</div><h3>Sistem Penjualan Toko Sembako</h3><p>Aplikasi desktop untuk mengelola data barang, transaksi, stok, dan laporan menggunakan Python dan SQLite.</p><span class="project-tag">Python · SQLite · CustomTkinter</span></article>
-          <article class="card"><div class="card-icon">📋</div><h3>Perancangan Sistem Absensi Guru</h3><p>Analisis proses absensi manual dan perancangan rekomendasi sistem informasi absensi digital.</p><span class="project-tag">Analisis Sistem · UML</span></article>
-          <article class="card"><div class="card-icon">⚽</div><h3>Sistem Reservasi Lapangan</h3><p>Rancangan sistem untuk membantu proses pemesanan dan pengelolaan jadwal lapangan olahraga.</p><span class="project-tag">Perancangan · UI/UX</span></article>
-        </div>
-      </div>
-    </section>
+<section class="education" id="education">
+<div class="container">
+<div class="section-title">
+<h2>Education</h2>
+<p>Riwayat pendidikan</p>
+</div>
+<div class="edu-box">
+<h3>Universitas Muhammadiyah Bengkulu</h3>
+<p>Program Studi Sistem Informasi</p>
+<p>Fakultas Teknik</p>
+</div>
+</div>
+</section>
 
-    <section class="soft" id="contact">
-      <div class="container">
-        <div class="contact-box">
-          <div class="eyebrow" style="color:#d9e8ff">Mari Terhubung</div>
-          <h2>Terima kasih sudah berkunjung!</h2>
-          <p>Untuk berdiskusi atau melihat informasi lebih lanjut, silakan hubungi saya melalui email atau kunjungi profil GitHub.</p>
-          <!-- Ganti alamat email dan username GitHub di bawah ini dengan milik Anda. -->
-          <a class="btn" href="mailto:emailkamu@gmail.com">Kirim Email</a>
-        </div>
-      </div>
-    </section>
-  </main>
+<section class="skills" id="skills">
+<div class="container">
+<div class="section-title">
+<h2>My Skills</h2>
+<p>Teknologi dan kemampuan yang saya pelajari</p>
+</div>
+<div class="grid">
+<div class="card skill"><div class="symbol">💻</div><h3>HTML & CSS</h3><p>Pengembangan tampilan website</p></div>
+<div class="card skill"><div class="symbol">🐍</div><h3>Python</h3><p>Pemrograman dan aplikasi desktop</p></div>
+<div class="card skill"><div class="symbol">⚙️</div><h3>Laravel</h3><p>Framework pengembangan web</p></div>
+<div class="card skill"><div class="symbol">🗄️</div><h3>Database</h3><p>SQL dan pengelolaan database</p></div>
+<div class="card skill"><div class="symbol">🎨</div><h3>Figma</h3><p>Desain UI/UX</p></div>
+<div class="card skill"><div class="symbol">📊</div><h3>UML</h3><p>Analisis dan perancangan sistem</p></div>
+</div>
+</div>
+</section>
 
-  <footer><div class="container">© 2026 Selly Artika · Personal Portfolio</div></footer>
-  <script>
-    document.querySelectorAll('nav a').forEach(link => {
-      link.addEventListener('click', () => document.querySelector('nav').classList.remove('open'));
-    });
-  </script>
+<section id="projects">
+<div class="container">
+<div class="section-title">
+<h2>My Projects</h2>
+<p>Beberapa proyek yang pernah saya kerjakan</p>
+</div>
+<div class="grid">
+<div class="card project">
+<h3>Sistem Penjualan Toko Sembako</h3>
+<p>Aplikasi desktop untuk mengelola data barang, kategori, transaksi, stok, dan laporan menggunakan Python dan SQLite.</p>
+<small>Python | SQLite | CustomTkinter</small>
+</div>
+<div class="card project">
+<h3>Perancangan Sistem Absensi Guru</h3>
+<p>Analisis pengelolaan absensi guru secara manual dan perancangan rekomendasi penerapan sistem absensi digital.</p>
+<small>Analisis Sistem | UML</small>
+</div>
+<div class="card project">
+<h3>Sistem Reservasi Lapangan</h3>
+<p>Perancangan sistem informasi untuk proses pemesanan dan pengelolaan jadwal lapangan olahraga.</p>
+<small>System Design | UI/UX</small>
+</div>
+</div>
+</div>
+</section>
+
+<section id="contact">
+<div class="container">
+<div class="contact-box">
+<h2>Let's Connect!</h2>
+<p>Terima kasih telah mengunjungi website portofolio saya.</p>
+<p>Silakan kunjungi profil GitHub saya untuk melihat aktivitas dan proyek lainnya.</p>
+<a href="https://github.com/sellyartika" target="_blank" class="btn">Visit My GitHub</a>
+</div>
+</div>
+</section>
+</main>
+
+<footer>
+<p>© 2026 Selly Artika | Personal Portfolio</p>
+<p>Designed with passion and creativity.</p>
+</footer>
+
 </body>
 </html>
